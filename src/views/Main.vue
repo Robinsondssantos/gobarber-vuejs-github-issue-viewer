@@ -10,8 +10,8 @@
         v-model="newRepo"
       />
       <button type="submit">
-        <font-awesome-icon v-if="loading" icon="user-secret" />
-        <font-awesome-icon v-else icon="user-secret" />
+        <font-awesome-icon v-if="loading" icon="spinner" />
+        <font-awesome-icon v-else icon="plus" />
       </button>
     </form>
 
