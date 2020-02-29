@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <h1>
+      <font-awesome-icon :icon="['fab', 'github-alt']" />
       Repositórios
     </h1>
     <form @submit.prevent="handleSubmit">
@@ -10,8 +11,8 @@
         v-model="newRepo"
       />
       <button type="submit">
-        <font-awesome-icon v-if="loading" icon="spinner" />
-        <font-awesome-icon v-else icon="plus" />
+        <font-awesome-icon v-if="loading" :icon="['fas', 'spinner']" spin />
+        <font-awesome-icon class="fa-plus-write" v-else :icon="['fas', 'plus']" />
       </button>
     </form>
 
@@ -50,22 +51,35 @@ export default {
     }
   }, 
   methods: {
-    // TODO handle duplicete repository (key)
     async handleSubmit (e) {
+      console.log(e)
+
       this.loading = true
-      const response = await api.get(`/repos/${this.newRepo}`)
 
-      if (response) {
-        const data = {
-          name: response.data.full_name
-        }
+      // Checks if that repository already exists
+      const exists = this.repositories.filter(
+        repository => 
+        repository.name.toLowerCase() === this.newRepo.toLowerCase())
+        
+      if (!exists.length && this.newRepo.length > 3) {
 
-        this.repositories = [...this.repositories, data]
+        try {
+          const response = await api.get(`/repos/${this.newRepo}`)
+
+          if (response) {
+            const data = {
+              name: response.data.full_name
+            }          
+            this.repositories = [...this.repositories, data]
+          }        
+
+        } catch (err) {
+          console.error(err)
+        } 
       }
 
-      this.newRepo = ''
+      this.newRepo = ''        
       this.loading = false      
-      console.log(e)
     }
   }
 }
@@ -108,6 +122,7 @@ export default {
   }
 
   form button[type=submit] {
+    color: #ffffff;
     background: #7159c1;
     border: 0;
     padding: 0 15px;
@@ -145,7 +160,5 @@ export default {
     color: #7159c1;
     text-decoration: none;
   }
-
-
 
 </style>

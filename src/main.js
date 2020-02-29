@@ -3,10 +3,11 @@ import App from './App.vue'
 import router from './router'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faUserSecret, faPlus, faSpinner } from '@fortawesome/free-solid-svg-icons'
+import { faPlus, faSpinner } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faGithubAlt } from '@fortawesome/free-brands-svg-icons'
 
-library.add(faUserSecret, faPlus, faSpinner)
+library.add(faPlus, faSpinner, faGithubAlt)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
