@@ -59,10 +59,10 @@ export default {
       // Checks if that repository already exists
       const exists = this.repositories.filter(
         repository => 
-        repository.name.toLowerCase() === this.newRepo.toLowerCase())
+        repository.name.toLowerCase() === this.newRepo.toLowerCase()
+      )
         
       if (!exists.length && this.newRepo.length > 3) {
-
         try {
           const response = await api.get(`/repos/${this.newRepo}`)
 
@@ -74,7 +74,7 @@ export default {
           }        
 
         } catch (err) {
-          console.error(err)
+          console.log(err)
         } 
       }
 
