@@ -122,6 +122,7 @@ export default {
   }
 
   form button[type=submit] {
+    width: 44px;
     color: #ffffff;
     background: #7159c1;
     border: 0;
