@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h1>
-      <font-awesome-icon :icon="['fab', 'github-alt']" />
+      <font-awesome-icon :icon="['fab', 'github-alt']" style="width: 20px;" />
       Repositórios
     </h1>
     <form @submit.prevent="handleSubmit">
