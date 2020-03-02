@@ -1,4 +1,4 @@
-# gobarber-vuejs-github-issue-viewer
+# rocketseat-vuejs-github-issue-viewer
 
 ## Project setup
 ```
